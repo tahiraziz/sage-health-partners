@@ -236,7 +236,7 @@
   }
   .steps {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
   .step {
@@ -451,13 +451,18 @@
   .team-card {
     background: var(--white);
     border-radius: 8px;
-    padding: 1.4rem;
+    padding: 1.8rem;
     display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .team-card-header {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
   }
   .team-avatar {
-    width: 52px; height: 52px;
+    width: 80px; height: 80px;
     border-radius: 50%;
     background: var(--green-light);
     overflow: hidden;
@@ -469,21 +474,20 @@
   }
   .team-name {
     font-family: 'PT Serif', serif;
-    font-weight: 600;
-    font-size: 1.15rem;
+    font-weight: 700;
+    font-size: 1.4rem;
     line-height: 1.2;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.2rem;
   }
   .team-role {
-    font-size: 0.78rem;
-    color: var(--green);
-    font-weight: 500;
-    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 400;
   }
   .team-bio {
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     color: var(--muted);
-    line-height: 1.55;
+    line-height: 1.65;
   }
 
   /* CTA */
@@ -558,7 +562,7 @@
 <section class="hero">
   <div>
     <div class="hero-eyebrow">For Independent Practices</div>    <h1>Practices leak <em>$125k-$250k</em> annually. We help recover revenue in 90 days.</h1>
-    <p class="hero-sub">Most leakage is caused from preventable operational issues. Many of those stem from the front office. We find and fix them.</p>
+    <p class="hero-sub">Most leakage is caused from preventable operational issues. We find them and fix them without major tech/staff overhauls.</p>
     <a href="https://calendly.com/sagehealth-consultation/sage-health-consultation" target="_blank" rel="noopener noreferrer" class="btn-primary">Book Free 15-Min Call →</a>
   </div>
   <div class="hero-stats">
@@ -621,8 +625,8 @@
             <circle cx="14" cy="14" r="2.5" fill="#5c9e52"/>
           </svg>
         </div>
-        <h3>Observe</h3>
-        <p>On-site visit. We watch the actual patient journey, time key interactions, and document what really happens vs. what we think happens (or don't see).</p>
+        <h3>Observe &amp; Gather</h3>
+        <p>We visit on-site and watch the actual patient journey, time key interactions, and document what really happens. We also look at existing data to complete the picture.</p>
       </div>
       <div class="step">
         <div class="step-icon">
@@ -633,19 +637,8 @@
             <line x1="23" y1="22" x2="23" y2="9" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <h3>Measure</h3>
-        <p>We capture 20+ KPIs across 5 pillars - pulling data from your EHR, scheduling system, and A/R reports to build an evidence-based baseline.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="14" cy="14" r="9" stroke="#5c9e52" stroke-width="1.5"/>
-            <circle cx="14" cy="14" r="3" stroke="#5c9e52" stroke-width="1.5"/>
-            <line x1="14" y1="5" x2="14" y2="8" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Benchmark</h3>
-        <p>Every metric is compared against national averages and top-quartile performers. See exactly where you stand vs. what's best-in-class.</p>
+        <h3>Measure &amp; Benchmark</h3>
+        <p>We capture 20+ KPIs across 5 pillars - pulling data from your tools and benchmarking them against national standards.</p>
       </div>
       <div class="step">
         <div class="step-icon">
@@ -656,8 +649,8 @@
             <line x1="6" y1="23" x2="22" y2="23" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <h3>Recommend</h3>
-        <p>We deliver a prioritized action plan with quick wins and a 90-day roadmap. Every recommendation tied to a specific dollar opportunity.</p>
+        <h3>Recommend &amp; Implement</h3>
+        <p>We deliver a prioritized 90-day action plan and implement tech required to meet those recommendations.</p>
       </div>
     </div>
   </div>
@@ -681,17 +674,17 @@
       </div>
     </div>
     <div class="pillar-card">
-      <div class="pillar-name">Scheduling & Capacity</div>
+      <div class="pillar-name">Scheduling</div>
       <div class="pillar-kpis">
         <span class="pillar-kpi-item">No-show rate</span>
         <span class="pillar-kpi-item">Same-day slot utilization</span>
-        <span class="pillar-kpi-item">Schedule fill rate (7-day)</span>
+        <span class="pillar-kpi-item">Schedule fill rate</span>
         <span class="pillar-kpi-item">Cancellation-to-fill rate</span>
         <span class="pillar-kpi-item">Appointment scheduling TAT</span>
       </div>
     </div>
     <div class="pillar-card">
-      <div class="pillar-name">Check-In Efficiency</div>
+      <div class="pillar-name">Check-In</div>
       <div class="pillar-kpis">
         <span class="pillar-kpi-item">Check-in time (door→complete)</span>
         <span class="pillar-kpi-item">Insurance verification accuracy</span>
@@ -784,24 +777,28 @@
   </div>
   <div class="team-cards">
     <div class="team-card">
-      <div class="team-avatar">
-        <img src="uploads/Tahir.png" alt="Tahir Aziz">
+      <div class="team-card-header">
+        <div class="team-avatar">
+          <img src="uploads/Tahir.png" alt="Tahir Aziz">
+        </div>
+        <div>
+          <div class="team-name">Tahir Aziz</div>
+          <div class="team-role">Partner, Healthcare Experience</div>
+        </div>
       </div>
-      <div>
-        <div class="team-name">Tahir Aziz</div>
-        <div class="team-role">Partner, Healthcare Experience</div>
-        <div class="team-bio">Certified Physician Practice Manager. Previously at AWS Healthcare and CVS Health. 8+ yrs in design, research and strategy. Increased productivity by 14%, saved 600hrs/yr of technical support, and reduced admin burden by 80% (est. pre-launch) with my product teams.</div>
-      </div>
+      <div class="team-bio">Certified Physician Practice Manager. Previously at AWS Healthcare and CVS Health. 8+ yrs in design, research and strategy. Increased productivity by 14%, saved 600hrs/yr of technical support, and reduced admin burden by 80% (est. pre-launch) with my product teams.</div>
     </div>
     <div class="team-card">
-      <div class="team-avatar">
-        <img src="uploads/Umair.png" alt="Umair Khalid">
+      <div class="team-card-header">
+        <div class="team-avatar">
+          <img src="uploads/Umair.png" alt="Umair Khalid">
+        </div>
+        <div>
+          <div class="team-name">Umair Khalid</div>
+          <div class="team-role">Partner, Business Strategy</div>
+        </div>
       </div>
-      <div>
-        <div class="team-name">Umair Khalid</div>
-        <div class="team-role">Partner, Business Strategy</div>
-        <div class="team-bio">15+ years in Product Development, Consulting and Solution Architecture, with an MBA. Previously at AWS Healthcare, PricewaterhouseCoopers (PwC), and McKesson. I build and scale products addressing healthcare and life sciences' thorniest challenges.</div>
-      </div>
+      <div class="team-bio">15+ years in Product Development, Consulting and Solution Architecture, with an MBA. Previously at AWS Healthcare, PricewaterhouseCoopers (PwC), and McKesson. I build and scale products addressing healthcare and life sciences' thorniest challenges.</div>
     </div>
   </div>
 </section>
