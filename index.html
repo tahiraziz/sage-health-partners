@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sage Health Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  h1, h2, h3, h4, h5, h6, .pillar-name, .team-name, .stat-num, .leak-num, .tier-price { letter-spacing: -0.576px; }
+
+  :root {
+    --bg: #f2f5f0;
+    --bg-dark: #1a2318;
+    --green: #2d5a27;
+    --green-mid: #3d7535;
+    --green-light: #e4ede1;
+    --accent: #5c9e52;
+    --text: #1a2318;
+    --muted: #5a6657;
+    --border: #d0dbc9;
+    --white: #fafcf8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.875rem; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green);
+    color: var(--white) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif !important;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--green-mid) !important; }
+
+  /* HERO */
+  .hero {
+    padding: 7rem 5% 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--green);
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 420px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+  .hero-sub {
+    font-size: 1.1rem !important;
+    color: var(--muted) !important;
+    font-weight: 400;
+    margin-bottom: 1.5rem !important;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--green-mid); }
+
+  /* Hero stats */
+  .hero-stats {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-num {
+    font-family: 'PT Serif', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 5%;
+  }
+
+  /* PROBLEM */
+  .problem {
+    padding: 5rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .problem h2 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .problem p {
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 3rem;
+    font-size: 1rem;
+  }
+  .leaks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .leak-item {
+    background: var(--white);
+    padding: 1.8rem 1.4rem;
+    text-align: left;
+  }
+  .leak-num {
+    font-family: 'PT Serif', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+  .leak-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* METHOD */
+  .method {
+    background: var(--bg-dark);
+    padding: 5rem 5%;
+  }
+  .method-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .method-label {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .method h2 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+  .method > .method-inner > p {
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .step {
+    padding-top: 1.2rem;
+  }
+  .step-icon {
+    margin-bottom: 0.8rem;
+  }
+  .step h3 {
+    font-family: 'PT Serif', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .step p {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  /* PILLARS */
+  .pillars {
+    padding: 5rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pillars-header {
+    margin-bottom: 2.5rem;
+  }
+  .pillars-header h2 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .pillars-header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 540px;
+  }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .pillar-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.4rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }  .pillar-name {
+    font-family: 'PT Serif', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    padding-top: 0.15rem;
+  }
+  .pillar-kpis {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-content: start;
+  }
+  .pillar-kpi-item {
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .pillar-kpi-item::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.7rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  /* PRICING */
+  .pricing {
+    background: var(--green-light);
+    padding: 5rem 5%;
+  }
+  .pricing-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pricing-inner h2 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    margin-bottom: 0.7rem;
+    letter-spacing: -0.02em;
+  }
+  .pricing-inner > p {
+    color: var(--muted);
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+  }
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: left;
+  }
+  .tier {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+  }
+  .tier.featured {
+    outline: 2px solid var(--green);
+  }
+  .tier-badge {
+    position: absolute;
+    top: -12px; left: 1.5rem;
+    background: var(--green);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+  }
+  .tier-name {
+    display: none;
+  }
+  .tier-price {
+    font-family: 'PT Serif', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1;
+  }
+  .tier-price span {
+    font-family: 'PT Serif', serif;
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .tier-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .tier ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .tier ul li {
+    font-size: 0.83rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .tier ul li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 5rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-label {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1rem;
+  }
+  .about h2 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.02em;
+  }
+  .about p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .team-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .team-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--green-light);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .team-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .team-name {
+    font-family: 'PT Serif', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+  .team-role {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .team-bio {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg-dark);
+    padding: 5rem 5%;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'PT Serif', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .cta-section p {
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    font-size: 1rem;
+  }
+  .cta-section .btn-primary {
+    font-size: 1rem;
+    padding: 0.9rem 2.2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 5% 3rem; }
+    .hero p { max-width: 100%; }
+    .leaks { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .tier-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    nav .nav-links { display: none; }
+  }
+  @media (max-width: 560px) {
+    .leaks { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#"><img src="uploads/Full Logo.png" alt="Sage Health Partners" style="height:30px;width:auto;display:block;"></a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#pillars">Framework</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a class="nav-cta" href="#contact">Free 15-Min Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">For Independent Practices</div>    <h1>Practices leak <em>$125K–$250K/yr</em> in preventable operational issues.</h1>
+    <p class="hero-sub">Many of those issues start at the front office. Sage Health Partners helps independent practices find and fix them within 30 days.</p>
+    <a href="#contact" class="btn-primary">Book Free 15-Min Call →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">19%</div>
+      <div class="stat-label">Average no-show rate — each missed visit is $175 lost</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">42%</div>
+      <div class="stat-label">Phone answer rate — 1 in 3 patient calls go unanswered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">11%</div>
+      <div class="stat-label">Insurance denial rate — most caused by check-in errors</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">35%</div>
+      <div class="stat-label">Annual front office turnover — each exit costs $9K–$12K</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROBLEM -->
+<section class="problem">
+  <h2>The revenue leak is invisible until you measure it.</h2>
+  <p>Practice owners know something is wrong. But without structured measurement and observation, it's almost impossible to identify what issues cause lost revenue.</p>
+  <div class="leaks">
+    <div class="leak-item">
+      <div class="leak-num">$32K</div>
+      <div class="leak-desc">Recoverable per month at point-of-service for a 42-patient/day practice</div>
+    </div>
+    <div class="leak-item">
+      <div class="leak-num">$329K</div>
+      <div class="leak-desc">In unfilled appointment revenue annually from a 19% no-show rate</div>
+    </div>
+    <div class="leak-item">
+      <div class="leak-num">15–30%</div>
+      <div class="leak-desc">Revenue improvement within 90 days for practices that optimize their front office</div>
+    </div>
+    <div class="leak-item">
+      <div class="leak-num">90 days</div>
+      <div class="leak-desc">To measurable results — no EHR overhaul, no staff overhaul required</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method" id="how-it-works">
+  <div class="method-inner">
+    <div class="method-label">Our Methodology</div>
+    <h2>Observe. Measure. Benchmark. Recommend.</h2>
+    <p>A structured, evidence-based process — not gut feeling. Every finding ties to a dollar outcome.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="14" cy="14" rx="10" ry="6.5" stroke="#5c9e52" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="2.5" fill="#5c9e52"/>
+          </svg>
+        </div>
+        <h3>Observe</h3>
+        <p>On-site visit. We watch the actual patient journey, time key interactions, and document what really happens vs. what we think happens (or don't see).</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="5" y1="22" x2="5" y2="10" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="11" y1="22" x2="11" y2="6" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="17" y1="22" x2="17" y2="13" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="23" y1="22" x2="23" y2="9" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Measure</h3>
+        <p>We capture 20+ KPIs across 5 pillars — pulling data from your EHR, scheduling system, and A/R reports to build an evidence-based baseline.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="9" stroke="#5c9e52" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="3" stroke="#5c9e52" stroke-width="1.5"/>
+            <line x1="14" y1="5" x2="14" y2="8" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Benchmark</h3>
+        <p>Every metric is compared against national averages and top-quartile performers. See exactly where you stand vs. what's best-in-class.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 5 L14 16" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 9 L14 5 L18 9" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 Q14 14 20 20" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <line x1="6" y1="23" x2="22" y2="23" stroke="#5c9e52" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Recommend</h3>
+        <p>We deliver a prioritized action plan with quick wins and a 90-day roadmap. Every recommendation tied to a specific dollar opportunity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="pillars-header">
+    <h2>5 Pillars. 20+ KPIs. One framework.</h2>
+    <p>Your front office functions mapped to a measurable pillar, tied back to dollar outcomes.</p>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <div class="pillar-name">Inbound Access</div>
+      <div class="pillar-kpis">
+        <span class="pillar-kpi-item">Phone answer rate</span>
+        <span class="pillar-kpi-item">Avg hold time</span>
+        <span class="pillar-kpi-item">Abandoned call rate</span>
+        <span class="pillar-kpi-item">Online booking adoption</span>
+        <span class="pillar-kpi-item">New patient conversion</span>
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-name">Scheduling & Capacity</div>
+      <div class="pillar-kpis">
+        <span class="pillar-kpi-item">No-show rate</span>
+        <span class="pillar-kpi-item">Same-day slot utilization</span>
+        <span class="pillar-kpi-item">Schedule fill rate (7-day)</span>
+        <span class="pillar-kpi-item">Cancellation-to-fill rate</span>
+        <span class="pillar-kpi-item">Appointment scheduling TAT</span>
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-name">Check-In Efficiency</div>
+      <div class="pillar-kpis">
+        <span class="pillar-kpi-item">Check-in time (door→complete)</span>
+        <span class="pillar-kpi-item">Insurance verification accuracy</span>
+        <span class="pillar-kpi-item">Pre-visit form completion</span>
+        <span class="pillar-kpi-item">Data entry accuracy</span>
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-name">Revenue Capture</div>
+      <div class="pillar-kpis">
+        <span class="pillar-kpi-item">Payment collection rate</span>
+        <span class="pillar-kpi-item">Time-of-service collection</span>
+        <span class="pillar-kpi-item">Denied claims rate due to data entry quality</span>
+        <span class="pillar-kpi-item">Checkout follow-up rate</span>
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-name">Patient Retention</div>
+      <div class="pillar-kpis">
+        <span class="pillar-kpi-item">Follow-up appt attendance</span>
+        <span class="pillar-kpi-item">Google review rating</span>
+        <span class="pillar-kpi-item">Referral rate (% of new pts)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <h2>High ROI. Low risk. Short engagements.</h2>
+    <p>Pick the depth you need. Every tier pays for itself.</p>
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="tier-name">Tier 1</div>
+        <div class="tier-price">$1,000</div>
+        <div class="tier-sub">Half-day on-site · Report in 3 days</div>
+        <ul>
+          <li>10–15 prioritized findings</li>
+          <li>Top 3 quick-win recommendations</li>
+          <li>Revenue opportunity estimate</li>
+          <li>Industry benchmark comparison (top 5 KPIs)</li>
+          <li>3 staff interviews</li>
+        </ul>
+      </div>
+      <div class="tier featured">
+        <div class="tier-badge">Most Insightful</div>
+        <div class="tier-name">Tier 2</div>
+        <div class="tier-price">$3,500</div>
+        <div class="tier-sub">2 full days on-site · Report in 7 days</div>
+        <ul>
+          <li>Everything in Tier 1</li>
+          <li>All 5 pillars fully evaluated</li>
+          <li>25+ KPI scorecard vs. benchmarks</li>
+          <li>Impact vs. effort priority matrix</li>
+          <li>90-day roadmap with revenue projections</li>
+          <li>Executive presentation (30 min)</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Tier 3</div>
+        <div class="tier-price">$5K <span>/ mo</span></div>
+        <div class="tier-sub">3-month engagement · Bi-weekly check-ins</div>
+        <ul>
+          <li>Everything in Tier 2</li>
+          <li>3 months implementation support</li>
+          <li>Staff training coordination</li>
+          <li>Vendor evaluation support</li>
+          <li>Change management playbook + SOPs</li>
+          <li>90-day outcome measurement</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Hesitation buster -->
+    <div style="margin-top:3rem; padding:2.5rem; text-align:center; max-width:680px; margin-left:auto; margin-right:auto;">
+      <p style="font-family:'PT Serif',serif; font-size:1.6rem; font-weight:600; letter-spacing:-0.576px; color:var(--text); line-height:1.3; margin-bottom:0.8rem;">&ldquo;What if we&rsquo;re not ready for an assessment?&rdquo;</p>
+      <p style="color:var(--muted); font-size:0.95rem; margin-bottom:1.8rem; line-height:1.7;">You don&rsquo;t need to have everything figured out. Our free 15-min call will help you gain clarity on how to take your practice to the next level.</p>
+      <a href="mailto:tahir@sagehealthpartners.com" class="btn-primary">Book Free 15-Min Call &rarr;</a>
+    </div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div>
+    <div class="about-label">ABOUT THE TEAM</div>
+    <h2>Former healthcare tech designers with an eye for great patient experiences.</h2>
+    <p>We bring a combined 20+ years of healthcare tech experience from places like AWS, CVS and McKesson. We believe the most direct way to impact healthcare is to serve practices holistically, not through a small slice of software.</p>
+    <p>Our focus is independent practices with 1–3 locations. We believe in serving our local community in Houston and Dallas.</p>
+  </div>
+  <div class="team-cards">
+    <div class="team-card">
+      <div class="team-avatar">
+        <img src="uploads/Tahir.png" alt="Tahir Aziz">
+      </div>
+      <div>
+        <div class="team-name">Tahir Aziz</div>
+        <div class="team-role">Partner, Healthcare Experience</div>
+        <div class="team-bio">8+ years in Service Design, UX Research, and Product Design. Previously at AWS Healthcare, CVS Caremark, and Nava PBC. Increased productivity by 14%, saved 600hrs/yr of technical support, and reduced admin burden by 80% (est. pre-launch) with my product teams. I've uncovered strategic product opportunities and designed simpler healthcare workflows. Also holds the Certified Physician Practice Manager certification from AAPC.</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">
+        <img src="uploads/Umair.png" alt="Umair Khalid">
+      </div>
+      <div>
+        <div class="team-name">Umair Khalid</div>
+        <div class="team-role">Partner, Business Strategy</div>
+        <div class="team-bio">15+ years in Product Development, Consulting and Solution Architecture, with an MBA. Previously at AWS Healthcare, PricewaterhouseCoopers (PwC), and McKesson. Built and scaled vertical SaaS products addressing healthcare and life sciences challenges.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>Find out how much revenue is leaking from your practice.</h2>
+  <p>A 15-minute call is all it takes to see if we're a fit. No obligation.</p>
+  <a href="mailto:tahir@sagehealthpartners.com" class="btn-primary">Book Free 15-Min Call →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <img src="uploads/Full Logo.png" alt="Sage Health Partners" style="height:22px;width:auto;opacity:0.6;display:block;margin-bottom:0.4rem;">
+    <div style="font-size:0.72rem;color:var(--muted);">© Copyright 2025 Sage Health Partners LLC</div>
+  </div>
+  <div>Houston · Dallas</div>
+</footer>
+
+<!-- TWEAKS -->
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "#2d5a27",
+  "heroHeadline": "Practices leak $125K–$250K/yr in preventable operational issues.",
+  "ctaText": "Book Free 15-Min Call →"
+}/*EDITMODE-END*/;
+
+let panel;
+
+function applyTweaks(t) {
+  document.documentElement.style.setProperty('--green', t.accentColor);
+  document.documentElement.style.setProperty('--green-mid', t.accentColor);
+  document.querySelector('.hero h1').innerHTML = t.heroHeadline.replace('$125K–$250K/yr', '<em>$125K–$250K/yr</em>');
+  document.querySelector('.btn-primary').textContent = t.ctaText;
+}
+
+function buildPanel() {
+  panel = document.createElement('div');
+  panel.style.cssText = 'position:fixed;bottom:1.5rem;right:1.5rem;background:#fafcf8;border:1px solid #d0dbc9;border-radius:10px;padding:1.4rem;width:260px;z-index:9999;font-family:Geist,sans-serif;font-size:13px;box-shadow:0 4px 20px rgba(0,0,0,0.1);display:none;';
+  panel.innerHTML = `
+    <div style="font-weight:600;margin-bottom:1rem;color:#1a2318">Tweaks</div>
+    <label style="display:block;margin-bottom:.8rem;color:#5a6657">
+      Accent Color
+      <input type="color" id="tw-color" value="${TWEAK_DEFAULTS.accentColor}" style="display:block;margin-top:4px;width:100%;height:32px;border:1px solid #d0dbc9;border-radius:4px;cursor:pointer;">
+    </label>
+    <label style="display:block;margin-bottom:.8rem;color:#5a6657">
+      Hero Headline
+      <input type="text" id="tw-headline" value="${TWEAK_DEFAULTS.heroHeadline}" style="display:block;margin-top:4px;width:100%;padding:6px 8px;border:1px solid #d0dbc9;border-radius:4px;font-size:12px;">
+    </label>
+    <label style="display:block;color:#5a6657">
+      CTA Button Text
+      <input type="text" id="tw-cta" value="${TWEAK_DEFAULTS.ctaText}" style="display:block;margin-top:4px;width:100%;padding:6px 8px;border:1px solid #d0dbc9;border-radius:4px;font-size:12px;">
+    </label>
+  `;
+  document.body.appendChild(panel);
+
+  const update = () => {
+    const edits = {
+      accentColor: panel.querySelector('#tw-color').value,
+      heroHeadline: panel.querySelector('#tw-headline').value,
+      ctaText: panel.querySelector('#tw-cta').value
+    };
+    applyTweaks(edits);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  };
+  panel.querySelectorAll('input').forEach(i => i.addEventListener('input', update));
+}
+
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') {
+    if (!panel) buildPanel();
+    panel.style.display = 'block';
+  }
+  if (e.data?.type === '__deactivate_edit_mode' && panel) {
+    panel.style.display = 'none';
+  }
+});
+
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+applyTweaks(TWEAK_DEFAULTS);
+</script>
+
+</body>
+</html>
