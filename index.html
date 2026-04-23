@@ -524,6 +524,57 @@
     font-size: 0.8rem;
     color: var(--muted);
   }
+  .team-contact {
+    display: flex;
+    gap: 1.2rem;
+    padding-top: 0.2rem;
+  }
+  .team-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .team-contact-link:hover { color: var(--green); }
+
+  .footer-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+  .footer-email:hover { color: var(--green); }
+
+  /* CTA secondary button */
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.9rem 2.2rem;
+    border-radius: 4px;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -541,6 +592,7 @@
     .steps { grid-template-columns: 1fr; }
     .hero-stats { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .footer-right { align-items: flex-start !important; }
   }
 </style>
 </head>
@@ -787,6 +839,16 @@
         </div>
       </div>
       <div class="team-bio">Certified Physician Practice Manager. Previously at AWS Healthcare and CVS Health. 8+ yrs in design, research and strategy. Increased productivity by 14%, saved 600hrs/yr of technical support, and reduced admin burden by 80% (est. pre-launch) with my product teams.</div>
+      <div class="team-contact">
+        <a href="mailto:tahir@sagehealth.partners" class="team-contact-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 3.5 L8 9 L14.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Email
+        </a>
+        <a href="https://www.linkedin.com/in/tahiraziz4/" target="_blank" rel="noopener noreferrer" class="team-contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7 10v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="7" cy="7.5" r="1" fill="currentColor"/><path d="M11 17v-4a2 2 0 0 1 4 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 13v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          LinkedIn
+        </a>
+      </div>
     </div>
     <div class="team-card">
       <div class="team-card-header">
@@ -799,6 +861,16 @@
         </div>
       </div>
       <div class="team-bio">15+ years in Product Development, Consulting and Solution Architecture, with an MBA. Previously at AWS Healthcare, PricewaterhouseCoopers (PwC), and McKesson. I build and scale products addressing healthcare and life sciences' thorniest challenges.</div>
+      <div class="team-contact">
+        <a href="mailto:umair@sagehealth.partners" class="team-contact-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 3.5 L8 9 L14.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Email
+        </a>
+        <a href="https://www.linkedin.com/in/umair719/" target="_blank" rel="noopener noreferrer" class="team-contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7 10v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="7" cy="7.5" r="1" fill="currentColor"/><path d="M11 17v-4a2 2 0 0 1 4 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 13v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          LinkedIn
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -808,7 +880,10 @@
   <img src="favicon-dark.png" alt="" style="width:64px;margin-bottom:1.5rem;opacity:0.9;">
   <h2>Find out how much revenue you can recover.</h2>
   <p>A 15-minute call is all it takes to see if we're a fit. No obligation.</p>
-  <a href="https://calendly.com/sagehealth-consultation/sage-health-consultation" target="_blank" rel="noopener noreferrer" class="btn-primary">Book Free 15-Min Call →</a>
+  <div class="cta-buttons">
+    <a href="https://calendly.com/sagehealth-consultation/sage-health-consultation" target="_blank" rel="noopener noreferrer" class="btn-primary">Book Free 15-Min Call →</a>
+    <a href="mailto:tahir@sagehealth.partners" class="btn-outline">Email Us</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -817,7 +892,13 @@
     <img src="uploads/Full Logo.png" alt="Sage Health Partners" style="height:22px;width:auto;opacity:0.6;display:block;margin-bottom:0.4rem;">
     <div style="font-size:0.72rem;color:var(--muted);">© Copyright 2026 Sage Health Partners LLC</div>
   </div>
-  <div>Houston · Dallas</div>
+  <div class="footer-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem;">
+    <a href="mailto:tahir@sagehealth.partners" class="footer-email">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 3.5 L8 9 L14.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Email Us
+    </a>
+    <div>Houston · Dallas</div>
+  </div>
 </footer>
 
 <!-- TWEAKS -->
